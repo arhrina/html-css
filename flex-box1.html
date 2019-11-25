@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <style>
+        .container{ /* container에 포함된 box들을 flex box(기본값 no wrap)의 wrap으로 선언
+        브라우저 좌우폭이 변동될 시 box 크기를 조절해서 가득 차도록 만드는 옵션이 no wrap
+        wrap은 브라우저 좌우폭 변동시 박스의 column을 줄바꿈하도록. flex box처럼 움직인다 */
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .flex-item{
+            border: 1px solid blue;
+            background-color: yellowgreen;
+            padding: 10px;
+            margin: 5px;
+            width: 300px;
+        }
+    </style>
+    <div class="container">
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+        <div class="flex-item">flex item</div>
+    </div>
+    
+</body>
+</html>
