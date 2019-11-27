@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        *,html,body{
+            margin: 0;
+            padding: 0;
+        }
+        /* pc환경에서 다양한 모니터 해상도 때문에 만들어놓은 레이아웃, 메뉴 등의 위치가 흐트러지는 현상이
+        자주 발생하므로 pc환경에서 해상도를 고정하기 위해 width 값을 주고 페이지를 구성
+        PC : 978px, 1200px로 고정해서 사용 */
+        html{
+            height: 100%;
+        }
+        body{
+            /*
+            width: 978px;
+            */
+            width: 90%;
+            /* y축 height는 전체화면으로 보이고 content가 가득차면 자동으로 scroll을 생성 */
+            overflow-y: auto;
+            height: 100%; /* height 값 %는 어떤 기준이 있어야하는데 상위의 html이 100% 세팅이 되어야 의미가 있다 */
+            border: 1px solid green;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        div.m-box {
+            border: 2px solid blue;
+            width: 80%;
+            margin: 30px auto;
+            /*
+            class m-box를 flex-box의 container로 설정
+            */
+            display: flex;
+            flex-direction: row-reverse;/* 기본값은 row. column으로 설정하면 위에서 아래방향으로 배치
+            row로 배치 : 주축배열
+            column으로 배치 : 교차축배열
+            row-reverse : 오른쪽에서 왼쪽으로 배치. 아랍어 같은 경우에 사용
+             */
+
+             /* 기본값 nowrap : 컨테이너의 폭이 변동되면 item의 폭을 조절하여 한 라인에 있도록 배치
+             wrap : 컨테이너의 폭이 변동되면 item을 줄바꿈하여 여러 라인에 배치
+              */
+            flex-wrap: nowrap;
+            flex-flow: row wrap;/* direction과 wrap을 한꺼번에 지정 */
+        }
+        div#d-1{
+            /* item에 지정된 flex : item들을 배치할 때 어떤 비율로 표시할 것인가를 지정. 1:2:3
+            기본값은 auto로 설정. 값을 지정하지 않으면 item들은 모두 같은 비율 */
+            flex: 1;
+        }
+        div#d-2{
+            /* flex에는 3가지 값을 지정할 수 있다. flex-grow, flex-shrink, flex basis
+            flex-grow : 내용 값에 따라 항목크기를 크게 할 것인가
+            flex-shrink : 내용값이 없으면 항목크기를 줄일 것인가
+            flex-basis : 크기를 줄이거나 늘릴 때 어떤 기준으로 설정할 것인가
+            기본값은 flex 0 1 auto
+            모든 flex 항목들을 bias 값보다 크지 않게 지정
+            flex : auto => flex: 1 1 auto. 주축방향으로 여유가 있으면 항목들을 늘리고 여유공간만큼
+            채워서 표현
+            
+            flex: none => flex: 0 0 auto. 각 항목의 크기를 자동으로 변경하지 말고 동일한 크기로 지정 */
+            flex: 2;
+            /*
+            grow를 양수로 지정하면 주축방향으로 크기가 flex-bias 값 이상으로 커지도록 한다
+            */
+            flex-grow: 1;
+            /*
+            shrink : 남은 공간을 어떻게 배치할 것인가. 양수이면 bias로 지정한 값보다 작아진다
+            */
+            flex-shrink: 1;
+            flex-basis: auto;
+            flex: 1 1 auto;
+            flex: 1 1 200px;
+/* grow를 1로, shrink를 1로, basis를 200px로 지정. 축약형
+=> 배율을 1로, 크기가 조절될 때 200px 범위 내에서 조절, 기준크기를 200px로 고정 */
+        }
+        div#d-3{
+            flex: 3;
+        }
+        div.s-box{
+            border: 1px solid red;
+            width: 100px;
+            margin: 20px;
+        }
+        div#m-box2{
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        div#s-1{
+
+        }
+    </style>
+    <div class="m-box">
+        <div class="s-box" id="d-1">box item 1</div>
+        <div class="s-box" id="d-2">box item 2</div>
+        <div class="s-box" id="d-3">box item 3</div>
+        <div class="s-box" id="d-4">box item 4</div>
+        <div class="s-box" id="d-5">box item 5</div>
+    </div>
+    <p></p>
+    <p></p>
+    <div class="m-box" id="m-box2">
+        <div class="s-box" id="s-1">
+            sub box
+        </div>
+    </div>
+</body>
+</html>
